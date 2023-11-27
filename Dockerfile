@@ -4,6 +4,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
-COPY graduation.py ./
+COPY . .
 
-CMD["python","./graduation.py"]
+CMD ["python3","./graduation.py"]
