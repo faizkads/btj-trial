@@ -1,7 +1,7 @@
 - name: Menjalankan docker container - Faiz
   hosts: btj-academy
   become: true
-  task:
+  tasks:
     - docker_container:
       name: faiz2
       image: "grad_app"
