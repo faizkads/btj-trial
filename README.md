@@ -5,14 +5,14 @@ Hi! this is the first version of the repo! **graduates.py** is a simple script t
 ## Simple Task - Ansible
 
 ### 1. Buatlah inventory yang mendefinisikan variabel dan host
-```
+```yaml
 all:
   hosts:
     btj-academy:
       ansible_host: 10.184.0.100
 ```
 ### 2. Buatlah playbook dengan task menjalankan docker container dan kriteria terdapat image, port, environment variables
-```
+```yaml
 - name: Menjalankan docker container - Faiz
   hosts: btj-academy
   become: true
@@ -23,20 +23,36 @@ all:
         interactive: true
         tty: true
         ports:
-          - '8019'
+          - "8034:8034"
 ```
 
 ### Run ansible nya
 1. Copy ssh from local to vm
-```
+```bash
 scp C:\Users\USER\.ssh\id_rsa <user>@btj-academy.bangunindo.io:/home/<user>/.ssh/id_rsa
 ```
-2. Change permission key yang di-copy
+2. Create a local dockerfile for ansible in the same directory with `inventory.yaml` and `playbook.yaml`
+```dockerfile
+FROM python:3.9-alpine
+
+RUN apk update && apk add build-base libffi-dev
+
+RUN pip3 install ansible
+
+COPY . .
 ```
-chmod -R 400 /home/<user>/.ssh/id_rsa*
+3. Build the docker image for the local docker, and run the image as container
+```bash
+docker build -t lala
+docker run -it -d -v C:/Users/faizk\.ssh\:/root/.ssh/ --name test lala
+```
+5. Enter the container and Change the permission of the ssh key
+```bash
+docker exec -it 2e0335ed6191 sh
+chmod -R 400 /root/.ssh/id_rsa*
 ```
 3. Run ansible
-```
+```bash
 ansible-playbook -i inventory.yaml playbook.yaml --user faizkhansaadrika
 ```
 
@@ -51,11 +67,15 @@ Steps:
 5. Verify with `docker images`
 
 ### 2. Jalankan image tersebut sebagai container dan berjalan pada port 8081
-`docker run -it -d --expose 8081 --name faiz grad_app`
-atau saya juga baca bisa dengan
-`docker run -it -d -p 8081:8081 --name faiz grad_app`
-### 3. Berapakah IP docker container whoami?
+```bash
+docker run -it -d --expose 8081 --name faiz grad_app`
 ```
+atau saya juga baca bisa dengan
+```bash
+docker run -it -d -p 8081:8081 --name faiz grad_app`
+```
+### 3. Berapakah IP docker container whoami?
+```bash
 docker inspect whoami
 output:
 ...
