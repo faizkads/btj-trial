@@ -2,8 +2,45 @@
 
 Hi! this is the first version of the repo! **graduates.py** is a simple script to determine the student's graduation based on the score and absence
 
+## Simple Task - Ansible
 
-## Simple Task
+### 1. Buatlah inventory yang mendefinisikan variabel dan host
+```
+all:
+  hosts:
+    btj-academy:
+      ansible_host: 10.184.0.100
+```
+### 2. Buatlah playbook dengan task menjalankan docker container dan kriteria terdapat image, port, environment variables
+```
+- name: Menjalankan docker container - Faiz
+  hosts: btj-academy
+  become: true
+  tasks:
+    - docker_container:
+        name: faiz2
+        image: "grad_app"
+        interactive: true
+        tty: true
+        ports:
+          - '8019'
+```
+
+### Run ansible nya
+1. Copy ssh from local to vm
+```
+scp C:\Users\USER\.ssh\id_rsa <user>@btj-academy.bangunindo.io:/home/<user>/.ssh/id_rsa![image](https://github.com/faizkads/btj-trial/assets/56906493/70745ff3-9360-4e30-9288-6041ee621bdd)
+```
+2. Change permission key yang di-copy
+```
+chmod -R 400 /home/<user>/.ssh/id_rsa*
+```
+3. Run ansible
+```
+ansible-playbook -i inventory.yaml playbook.yaml --user faizkhansaadrika
+```
+
+## Simple Task - Docker Image
 
 ### 1. Buatlah image dari aplikasi sederhana yang sudah dibuat
 Steps:
