@@ -1,8 +1,8 @@
-# btj-trial
+# btj-trial - Faiz Khansa Adrika
 
 Hi! this is the first version of the repo! **graduates.py** is a simple script to determine the student's graduation based on the score and absence
 
-## Simple Task - Ansible
+## Simple Task - Ansible (28-11-2023)
 
 ### 1. Buatlah inventory yang mendefinisikan variabel dan host
 ```yaml
@@ -46,18 +46,23 @@ COPY . .
 docker build -t lala
 docker run -it -d -v C:/Users/faizk\.ssh\:/root/.ssh/ --name test lala
 ```
-5. Enter the container, install openssh, and Change the permission of the ssh key
+4. Enter the container, install openssh, and Change the permission of the ssh key
 ```bash
 docker exec -it 2e0335ed6191 sh
 apk add openssh
 chmod -R 400 /root/.ssh/id_rsa*
 ```
-3. Run ansible
+5. Run ansible
 ```bash
 ansible-playbook -i inventory.yaml playbook.yaml --user faizkhansaadrika
 ```
+6. Login to ssh, and check/verify whether the container has been ran
+```bash
+ssh faizkhansaadrika@btj-academy.bangunindo.io
+docker ps -a
+```
 
-## Simple Task - Docker Image
+## Simple Task - Docker Image (27-11-2023)
 
 ### 1. Buatlah image dari aplikasi sederhana yang sudah dibuat
 Steps:
@@ -83,7 +88,7 @@ output:
 	"IPAddress": "172.17.0.2",
 ```
 ### 4. Apa isi dari file yang tersembunyi dari docker container whoami?
-1. check colume mount dari whoami dengan `docker inspect whoami`
+1. check volume mount dari whoami dengan `docker inspect whoami`
 2. `docker exec -it f301b98cba61 /bin/sh`
 3. `ls tmp/system`
 4. `cat tmp/system/whoami`
