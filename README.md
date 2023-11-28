@@ -29,7 +29,7 @@ all:
 ### Run ansible nya
 1. Copy ssh from local to vm
 ```
-scp C:\Users\USER\.ssh\id_rsa <user>@btj-academy.bangunindo.io:/home/<user>/.ssh/id_rsa![image](https://github.com/faizkads/btj-trial/assets/56906493/70745ff3-9360-4e30-9288-6041ee621bdd)
+scp C:\Users\USER\.ssh\id_rsa <user>@btj-academy.bangunindo.io:/home/<user>/.ssh/id_rsa
 ```
 2. Change permission key yang di-copy
 ```
