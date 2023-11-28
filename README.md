@@ -46,9 +46,10 @@ COPY . .
 docker build -t lala
 docker run -it -d -v C:/Users/faizk\.ssh\:/root/.ssh/ --name test lala
 ```
-5. Enter the container and Change the permission of the ssh key
+5. Enter the container, install openssh, and Change the permission of the ssh key
 ```bash
 docker exec -it 2e0335ed6191 sh
+apk add openssh
 chmod -R 400 /root/.ssh/id_rsa*
 ```
 3. Run ansible
