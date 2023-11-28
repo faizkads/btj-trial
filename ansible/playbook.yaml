@@ -1,0 +1,12 @@
+- name: Menjalankan docker container ubuntu
+  hosts: btj-academy
+  become: true
+  task:
+    - docker_container:
+      name: faiz2
+      image: "grad_app"
+      interactive: true
+      tty: true
+      ports:
+        - "8081:8081"
+
