@@ -8,5 +8,4 @@
         interactive: true
         tty: true
         ports:
-          - '8019'
-
+          - "8024:8024"
