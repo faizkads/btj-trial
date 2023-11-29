@@ -111,7 +111,7 @@ ansible-playbook -i inventory.yaml playbook.yaml --user faizkhansaadrika
 ```bash
 ssh faizkhansaadrika@btj-academy.bangunindo.io
 ls ../task2
-docker ps -a | grep flask-faiz
+docker ps -a | grep flask-faiz2
 ```
 
 Check the routes:
