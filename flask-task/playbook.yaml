@@ -1,0 +1,25 @@
+- name: Simple Task 2 to Deploy Flask App - Faiz
+  hosts: btj-academy
+  become: true
+  tasks:
+    - name: Copy files inside flask folder to remote server
+      copy:
+        src: "./flask/"
+        dest: "{{ vmPath }}"
+
+    - name: Build docker image
+      community.docker.docker_image:
+        name: "{{ imageName }}"
+        tag: "{{ imgTag }}"
+        build:
+          path: "{{ vmPath }}"
+        source: build
+
+    - name: Run docker container
+      docker_container:
+          name: "{{ contName }}"
+          image: "{{ imageName }}:{{ imgTag }}"
+          interactive: true
+          tty: true
+          ports:
+            - "{{port}}"

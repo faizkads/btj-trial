@@ -1,0 +1,10 @@
+all:
+  vars:
+    contName: flask-faiz2
+    imageName: flaskapp-faiz
+    imgTag: 0.0.1
+    vmPath: /home/faizkhansaadrika/task2
+    port: 5003:5003
+  hosts:
+    btj-academy:
+      ansible_host: 10.184.0.100

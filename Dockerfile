@@ -1,7 +1,7 @@
-FROM python:latest
+FROM python:3.9-alpine
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+RUN apk update && apk add build-base libffi-dev
+RUN pip3 install ansible
 
 WORKDIR /app
 COPY . .
